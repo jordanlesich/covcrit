@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 const IndexPage = ({ data }) => {
   const pundits = data.allGoogleSpreadsheetCovid19ReportCardSheet1.edges;
