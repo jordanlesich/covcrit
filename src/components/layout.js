@@ -1,16 +1,9 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+import Header from "./header";
+import "./layout.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,7 +14,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -29,23 +22,38 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
+          maxWidth: 1000,
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <h4>Read This!</h4>
+          <p>
+            At the moment, CovCritic is currently a proof of concept project.
+          </p>
+          <p>
+            We do not have the resources to make reliable assumptions about
+            COVID pundits. Our goal is to inspire scientists, data
+            professionals, economists, web developers, fact-checkers, and
+            journalists to join efforts and provide an online resource to
+            separate the reliable, good-faith COVID experts from those who --
+            for one reason or another -- have delivered misinformation or
+            continues to deliver misinformation.
+          </p>
+          <p>
+            In the future, CovCritic will be a reliable, fast resource in
+            separating those who can be trusted to deliver conclusions based on
+            scientific evidence, from those who endanger lives by putting their
+            own immediate political goals first. We will continue to sharpen our
+            tools and become more accurate with time. Our commitment is to the
+            emerging findings and the belief that the public has a right to know
+            the truth -- no matter what.
+          </p>
         </footer>
       </div>
     </>
-  )
-}
+  );
+};
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+export default Layout;

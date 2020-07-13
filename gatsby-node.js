@@ -26,14 +26,21 @@ exports.createPages = ({ graphql, actions }) => {
       ) {
         edges {
           node {
-            name
-            warnedPublicAboutCovidInJan_
-            website
-            twitter
             fields {
               slug
             }
-            dateWarnedAboutCovid
+            name
+            verdict
+            imgLink
+            nationality
+            organization
+            positionOrRole
+            officialBio
+            pullquote
+            website
+            twitter
+            wikipedia
+            reasoning
           }
         }
       }

@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 const IndexPage = () => (
   <Layout>
     <Link to="/punditListing">
-      <h1>Soma'dat Shit!</h1>
+      <h1>Listing</h1>
     </Link>
     {/* <Link>See Listing</Link> */}
   </Layout>

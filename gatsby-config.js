@@ -1,14 +1,14 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
-const envCreds = JSON.parse(`${process.env.CREDENT}`)
+const envCreds = JSON.parse(`${process.env.CREDENT}`);
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `COVCritic`,
+    description: `Separating the experts from the "experts".`,
+    author: "Jordan Lesich",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -83,4 +83,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
