@@ -5,12 +5,12 @@ const PunditPage = ({ pageContext }) => {
   const { pundit } = pageContext;
 
   // const socials = [];
-  const name = pundit.name;
-  const verdict = pundit.verdict || "Undecided";
-  const nationality = pundit.nationality || "Needs to be added";
-  const organization = pundit.organization || "Needs to be added";
-  const positionOrRole = pundit.positionOrRole || "Needs to be added";
-  const officialBio = pundit.officialBio || "Needs to be added";
+  // const name = pundit.name;
+  // const verdict = pundit.verdict || "Undecided";
+  // const nationality = pundit.nationality || "Needs to be added";
+  // const organization = pundit.organization || "Needs to be added";
+  // const positionOrRole = pundit.positionOrRole || "Needs to be added";
+  // const officialBio = pundit.officialBio || "Needs to be added";
 
   // // const pullquote = pundit.pullquote || "Needs to be added";
 
@@ -20,7 +20,7 @@ const PunditPage = ({ pageContext }) => {
       <div>
         <h1>{pundit.name}</h1>
         {pundit.imgLink ? (
-          <img src={pundit.imgLink} />
+          <img src={pundit.imgLink} alt={pundit.name} />
         ) : (
           <div>"No Image Link"</div>
         )}
@@ -31,7 +31,7 @@ const PunditPage = ({ pageContext }) => {
         <div className="pundit-socials"></div>
         <ul>
           {pundit.reasoning !== null
-            ? pundit.reasoning.match(/[^\*]+/g).map((str, index) => {
+            ? pundit.reasoning.match(/[^*]+/g).map((str, index) => {
                 return <li key={index}>{str}</li>;
               })
             : "Reasoning needs to be added"}
