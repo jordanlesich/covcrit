@@ -20,6 +20,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
+    {
       resolve: "gatsby-source-google-spreadsheet",
       options: {
         // The `spreadsheetId` is required, it is found in the url of your document:
