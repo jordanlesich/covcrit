@@ -3,6 +3,7 @@ export const getPalette = verdict => {
     Reliable: "rgb(62, 172, 168)",
     Unreliable: "rgb(172, 0, 15)",
     Undecided: "rgb(115,115,115)",
+    null: "rgb(115,115,115)",
   };
   return palette[verdict];
 };
@@ -11,6 +12,7 @@ export const getBGPalette = verdict => {
     Reliable: "rgba(62, 172, 168, 0.1)",
     Unreliable: "rgba(176, 38, 0, 0.1)",
     Undecided: "rgb(115,115,115, 0.1)",
+    null: "rgb(115,115,115, 0.1)",
   };
   return palette[verdict];
 };

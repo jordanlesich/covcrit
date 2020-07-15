@@ -19,7 +19,7 @@ const WarnBox = styled.div`
 const Warning = () => {
   return (
     <WarnBox>
-      <h3 warn-title>Warning!</h3>
+      <h3 className="warn-title">Warning!</h3>
       <div className="body-text">
         <p>CovCritic is a proof of concept project.</p>
         <p>

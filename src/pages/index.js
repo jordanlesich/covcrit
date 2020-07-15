@@ -1,26 +1,40 @@
 import React from "react";
+import { Link, graphql } from "gatsby";
+
 import Layout from "../components/layout";
 import Warning from "../components/warning";
-import { Link, graphql } from "gatsby";
+import ListItem from "../components/listItem";
 // import styled from 'styled-components'
+import { trimObjFields } from "../helpers";
+import styled from "styled-components";
+
+const Listing = styled.ul`
+  .listing-link {
+    text-decoration: none;
+  }
+`;
 
 const IndexPage = ({ data }) => {
   // const [isWarning, setIsWarning] = useState(true);
 
   const pundits = data.allGoogleSpreadsheetCovid19ReportCardSheet1.edges;
-  console.log(pundits);
+
   return (
     <Layout>
       <Warning />
-      <ul>
+      <Listing>
         {pundits.map(({ node }, index) => {
           return (
-            <Link to={`/${node.fields.slug}`} key={index}>
-              <li>{node.name}</li>
+            <Link
+              to={`/${node.fields.slug}`}
+              key={index}
+              className="listing-link"
+            >
+              <ListItem pundit={trimObjFields(node)} />
             </Link>
           );
         })}
-      </ul>
+      </Listing>
     </Layout>
   );
 };
@@ -36,6 +50,11 @@ export const pageQuery = graphql`
             slug
           }
           name
+          imgLink
+          verdict
+          organization
+          officialBio
+          positionOrRole
         }
       }
     }

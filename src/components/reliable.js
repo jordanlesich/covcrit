@@ -29,7 +29,7 @@ const Reliable = ({ isReliable }) => {
   };
   return (
     <Indicator color={getPalette(isReliable)} className="reliable-container">
-      {getIcon()}
+      {getIcon(isReliable)}
       <h3 className="reliable-verdict">{isReliable}</h3>
     </Indicator>
   );
