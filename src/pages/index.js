@@ -1,11 +1,9 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-
 import Layout from "../components/layout";
 import Warning from "../components/warning";
 import ListItem from "../components/listItem";
-// import styled from 'styled-components'
-import { trimObjFields } from "../helpers";
+import { trimObjFields, getPalette } from "../helpers";
 import styled from "styled-components";
 
 const Listing = styled.ul`
