@@ -1,12 +1,17 @@
 import React from "react";
 import Layout from "../components/layout";
+import Warning from "../components/warning";
 import { Link, graphql } from "gatsby";
+// import styled from 'styled-components'
 
 const IndexPage = ({ data }) => {
+  // const [isWarning, setIsWarning] = useState(true);
+
   const pundits = data.allGoogleSpreadsheetCovid19ReportCardSheet1.edges;
   console.log(pundits);
   return (
     <Layout>
+      <Warning />
       <ul>
         {pundits.map(({ node }, index) => {
           return (
