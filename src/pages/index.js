@@ -63,7 +63,10 @@ const IndexPage = ({ data }) => {
 
   const filterPundits = str => {
     const newPundits = punditNodes.filter(pundit => {
-      return pundit[filterBy].toLowerCase().includes(str);
+      return (
+        pundit[filterBy].toLowerCase().includes(str.trim()) ||
+        pundit[filterBy].includes(str.trim())
+      );
     });
     setPundits(newPundits);
   };
