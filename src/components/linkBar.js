@@ -46,7 +46,6 @@ const Bar = styled.div`
 `;
 
 const LinkBar = props => {
-  console.log(props.verdict);
   return (
     <Bar
       bgColor={getBGPalette(props.verdict)}

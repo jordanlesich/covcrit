@@ -5,7 +5,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `GoogleSpreadsheetCovid19ReportCardSheet1`) {
     const slug = `pundits/${_.kebabCase(node.name)}`;
-    console.log(slug);
     createNodeField({
       node,
       name: `slug`,

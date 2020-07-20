@@ -8,8 +8,6 @@ import Reasoning from "../components/reasoning.js";
 
 import { trimObjFields, getBGPalette } from "../helpers.js";
 
-console.log(trimObjFields);
-
 const ProfilePage = styled.div`
   /* padding-top: 3vh; */
   border-left: 1px solid rgba(33, 134, 196, 1);

@@ -19,7 +19,6 @@ export const getBGPalette = verdict => {
 
 export const trimObjFields = obj => {
   const newObj = { ...obj };
-  console.log(newObj);
   for (let key in newObj) {
     if (typeof newObj[key] === "string") {
       newObj[key] = newObj[key].trim();

@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const WarnBox = styled.div`
+  position: relative;
   width: 60vw;
   margin: 3vh 0;
   padding: 2vw;
@@ -14,11 +16,20 @@ const WarnBox = styled.div`
     font-size: 1.2rem;
     font-weight: 500;
   }
+  .x-icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+  }
 `;
 
-const Warning = () => {
+const Warning = ({ toggleWarning }) => {
   return (
     <WarnBox>
+      <HighlightOffIcon className="x-icon" onClick={toggleWarning} />
       <h3 className="warn-title">Warning!</h3>
       <div className="body-text">
         <p>CovCritic is a proof of concept project.</p>

@@ -39,6 +39,7 @@ const ListBox = styled.article`
     transform: translateY(1.5px);
     color: ${props => getPalette(props.verdict)};
   }
+  /* dfsdfsdf */
   .name {
     font-size: 2rem;
     margin-left: 0.5rem;
