@@ -57,7 +57,7 @@ const IndexPage = ({ data }) => {
   );
 
   const [warning, setWarning] = useState(true);
-  const [filterBy, setFilterBy] = useState("organization");
+  const [filterBy, setFilterBy] = useState("name");
   const [search, setSearch] = useState("");
   const [pundits, setPundits] = useState(punditNodes);
 
