@@ -2,27 +2,29 @@ import React from "react";
 import styled from "styled-components";
 
 import Layout from "../components/layout";
-import Reliable from "../components/reliable";
 import LinkBar from "../components/linkBar.js";
 import Reasoning from "../components/reasoning.js";
-
-import { trimObjFields, getBGPalette } from "../helpers.js";
+import WarningIcon from "@material-ui/icons/Warning";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
+import HelpIcon from "@material-ui/icons/Help";
+import { trimObjFields, getPalette, getBGPalette } from "../helpers.js";
 
 const ProfilePage = styled.div`
-  /* padding-top: 3vh; */
-  border-left: 1px solid rgba(33, 134, 196, 1);
-  background-color: ${props => props.color};
-
+  padding-top: 6vh;
+  /* background-color: ${props => props.color}; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   .pundit-name {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-variant: small-caps;
-    font-size: calc(2rem + 0.5vh + 1.5vw);
-    font-weight: 500;
-    margin-bottom: 4vh;
-    letter-spacing: -4px;
-    padding-bottom: 3vh;
-    padding-top: 3vh;
-    border-bottom: 1px solid rgba(33, 134, 196, 0.5);
+    color: #171e3c;
+  margin-bottom: 6vh;
+  margin-left: 4vw;
+  font-size: calc(2rem + 0.5vh + 1.5vw);
+  letter-spacing: -2px;
+  font-weight: 300;
+  font-variant: small-caps;
+    padding-bottom: 4vh;
+    /* padding-top: 3vh; */
+    border-bottom: 1px solid ${props => getBGPalette(props.verdict)};
     margin-left: 4vw;
     margin-right: 4vw;
   }
@@ -39,21 +41,21 @@ const ProfilePage = styled.div`
   .pundit-image {
     object-fit: cover;
     object-position: 100% 0;
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     border-radius: 4px;
   }
   .img-placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     background: lightgrey;
     border-radius: 4px;
   }
   .info-text {
-    margin-left: 3vw;
+    margin-left: 1vw;
     font-size: 1.1rem;
   }
   .bold {
@@ -63,6 +65,18 @@ const ProfilePage = styled.div`
     padding: 0 10rem 2rem 10rem;
     font-style: italic;
   }
+  .reliable-verdict {
+    font-size: 2.5rem;
+    margin-left: 0.5rem;
+    color: ${props => getPalette(props.verdict)};
+  }
+  .reliable-icon {
+    position: absolute;
+    transform: translate(-60%, -60%);
+    height: 5rem;
+    width: 5rem;
+    color: ${props => getPalette(props.verdict)};
+  }
 `;
 
 const PunditPage = ({ pageContext }) => {
@@ -70,17 +84,24 @@ const PunditPage = ({ pageContext }) => {
 
   const name = pundit.name;
   const verdict = pundit.verdict || "Undecided";
-  // const nationality = pundit.nationality || "Needs to be added";
   const organization = pundit.organization || "Needs to be added";
   const positionOrRole = pundit.positionOrRole || "Needs to be added";
   const officialBio = pundit.officialBio || "Needs to be added";
 
+  const getIcon = verdict => {
+    const str = verdict.toLowerCase();
+    if (str === "reliable")
+      return <VerifiedUserIcon className="reliable-icon" />;
+    if (str === "unreliable") return <WarningIcon className="reliable-icon" />;
+    else return <HelpIcon className="reliable-icon" />;
+  };
   return (
     <Layout>
-      <ProfilePage color={getBGPalette(verdict)}>
+      <ProfilePage verdict={verdict}>
         <h1 className="pundit-name">{name}</h1>
         {/* <p className="pundit-nationality">{nationality}</p> */}
         <div className="top-card">
+          {getIcon(verdict)}
           {pundit.imgLink ? (
             <img
               src={pundit.imgLink}
@@ -91,7 +112,7 @@ const PunditPage = ({ pageContext }) => {
             <div className="img-placeholder">No Image Link</div>
           )}
           <div className="stats">
-            <Reliable isReliable={verdict} />
+            <h3 className="reliable-verdict">{verdict}</h3>
             <p className="info-text org">
               <span className="bold">Organization</span>: {organization}
             </p>

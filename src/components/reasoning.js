@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { getPalette, getBGPalette } from "../helpers";
 
 const ReasonSection = styled.section`
-  padding: 2vw 4vw;
-  background-color: ${props => getBGPalette(props.verdict)};
+  padding: 2vw 0;
+  margin: 0 4vw;
+  border-top: 1px solid ${props => getBGPalette(props.verdict)};
+  border-bottom: 1px solid ${props => getBGPalette(props.verdict)};
   .reason-title {
     font-size: 2.5rem;
   }

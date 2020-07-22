@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-import SearchIcon from "@material-ui/icons/Search";
+import Search from "../components/search";
 
 const Nav = styled.nav`
   position: sticky;
@@ -12,7 +12,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   padding: 1rem;
-  box-shadow: -1px 3px 16px -3px rgba(0, 0, 0, 0.58);
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: rgb(33, 134, 196);
@@ -54,39 +54,28 @@ const Nav = styled.nav`
     position: relative;
     margin-right: 1vw;
   }
-  .nav-search-icon {
-    position: absolute;
-    transform: translate(-2.2rem, -0.05rem);
-    height: 2rem;
-    width: 2rem;
-  }
-  .nav-search-input {
-    border: 2px solid rgb(33, 134, 196);
-    border-radius: 5px;
-  }
 `;
 
-const Header = ({ siteTitle }) => (
-  <Nav>
-    <Link to="/" className="nav-logo">
-      <span className="cov">COV</span>
-      <span className="critic">Critic</span>
-    </Link>
-    <Link to="/" className="nav-link">
-      About
-    </Link>
-    <Link to="/" className="nav-link">
-      Listing
-    </Link>
-    <span className="nav-spacer"></span>
-    <form className="nav-search-form">
-      {/* <label> */}
-      <SearchIcon className="nav-search-icon" />
-      {/* <span className="nav-search-text">search</span> */}
-      {/* </label> */}
-      <input className="nav-search-input" placeholder="Pundit Name" />
-    </form>
-  </Nav>
-);
+const Header = props => {
+  return (
+    <Nav>
+      <Link to="/" className="nav-logo">
+        <span className="cov">COV</span>
+        <span className="critic">Critic</span>
+      </Link>
+      <Link to="/" className="nav-link">
+        About
+      </Link>
+      <Link to="/" className="nav-link">
+        Listing
+      </Link>
+      <span className="nav-spacer"></span>
+      <form className="nav-search-form">
+        {/* <label> */}
+        <Search size="md" />
+      </form>
+    </Nav>
+  );
+};
 
 export default Header;

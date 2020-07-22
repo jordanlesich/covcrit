@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import { Link, graphql } from "gatsby";
+import React from "react";
 import styled from "styled-components";
 
+import Listing from "../components/listing";
+import Title from "../components/title";
 import Layout from "../components/layout";
-import Warning from "../components/warning";
-import ListItem from "../components/listItem";
-import SearchIcon from "@material-ui/icons/Search";
+// import Warning from "../components/warning";
+import Search from "../components/search";
+import Switches from "../components/switches";
 
-import { trimObjFields } from "../helpers";
-
-const Listing = styled.div`
-  border-left: 1px solid rgba(33, 134, 196, 1);
-  .search-container {
-    margin-left: 6vw;
-  }
-  .cta {
+const IndexContainer = styled.div`
+  /* margin: 0 auto; */
+  padding-top: 6vh;
+  /* .cta {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-variant: small-caps;
     font-size: calc(2rem + 0.5vh + 1.5vw);
@@ -26,122 +23,56 @@ const Listing = styled.div`
     border-bottom: 1px solid rgba(33, 134, 196, 0.5);
     margin-left: 4vw;
     margin-right: 4vw;
-  }
+  } */
   .listing-link {
     text-decoration: none;
   }
+  .search-type {
+    text-transform: capitalize;
+  }
   .search-form {
-    position: relative;
-    display: inline-block;
-    margin-right: 1vw;
-    margin-left: 4vw;
+    width: 40vw;
+    margin-left: 6.5vw;
   }
-  .search-icon {
-    color: rgb(33, 134, 196);
-    position: absolute;
-    right: 0;
-    transform: translate(4.5rem, -0.7rem);
-    height: 4rem;
-    width: 4rem;
-  }
-  .search-input {
-    border: 2px solid rgb(33, 134, 196);
-    border-radius: 5px;
-    font-size: 2.2rem;
+  .search-wrapper {
+    margin-left: 56px;
+    margin-bottom: 2vh;
   }
 `;
 
 const IndexPage = ({ data }) => {
-  const punditNodes = data.allGoogleSpreadsheetCovid19ReportCardSheet1.edges.map(
-    ({ node }) => node
-  );
+  // const [warning, setWarning] = useState(true);
 
-  const [warning, setWarning] = useState(true);
-  const [filterBy, setFilterBy] = useState("name");
-  const [search, setSearch] = useState("");
-  const [pundits, setPundits] = useState(punditNodes);
-
-  const filterPundits = str => {
-    const newPundits = punditNodes.filter(pundit => {
-      return (
-        pundit[filterBy].toLowerCase().includes(str.trim()) ||
-        pundit[filterBy].includes(str.trim())
-      );
-    });
-    setPundits(newPundits);
-  };
-
-  const handleSearch = e => {
-    e.preventDefault();
-    setSearch(e.target.value);
-    filterPundits(e.target.value);
-  };
-
-  const toggleWarning = () => setWarning(!warning);
+  // const toggleWarning = () => setWarning(!warning);
 
   return (
     <Layout>
-      <Listing>
-        {warning ? (
-          <div className="search-container">
-            <Warning toggleWarning={toggleWarning} />
+      <IndexContainer>
+        {/* {warning && <Warning toggleWarning={toggleWarning} />} */}
+        <Title />
+        <form className="search-form">
+          <div className="search-wrapper">
+            <Search size="lg" />
           </div>
-        ) : (
-          <div>
-            <h1 className="cta">Search for a Pundit</h1>
-
-            <form className="search-form" onSubmit={handleSearch}>
-              {/* <label> */}
-              <SearchIcon className="search-icon" />
-              {/* <span className="nav-search-text">search</span> */}
-              {/* </label> */}
-              <input
-                className="search-input"
-                placeholder="Pundit Name"
-                value={search}
-                onChange={handleSearch}
-              />
-            </form>
-          </div>
-        )}
-        <ul>
-          {pundits.map((node, index) => {
-            return (
-              <Link
-                to={`/${node.fields.slug}`}
-                key={index}
-                className="listing-link"
-              >
-                <ListItem pundit={trimObjFields(node)} />
-              </Link>
-            );
-          })}
-        </ul>
-      </Listing>
+          <Switches />
+        </form>
+        <Listing />
+      </IndexContainer>
     </Layout>
+
+    // <div>
+    //   <h1 className="cta">Search for a Pundit</h1>
+
+    //   <form className="search-form" onSubmit={handleSubmit}>
+    //     {/* <label> */}
+
+    //     {/* <span className="nav-search-text">search</span> */}
+    //     {/* </label> */}
+
+    //   </form>
+    // </div>
+    // )}
   );
 };
-
-export const pageQuery = graphql`
-  {
-    allGoogleSpreadsheetCovid19ReportCardSheet1(
-      sort: { fields: name, order: ASC }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          name
-          imgLink
-          verdict
-          organization
-          officialBio
-          positionOrRole
-        }
-      }
-    }
-  }
-`;
 
 export default IndexPage;

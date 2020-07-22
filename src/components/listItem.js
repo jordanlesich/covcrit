@@ -1,5 +1,5 @@
 import React from "react";
-import { getBGPalette, getPalette } from "../helpers";
+import { getPalette } from "../helpers";
 import styled from "styled-components";
 import PersonIcon from "@material-ui/icons/Person";
 import WarningIcon from "@material-ui/icons/Warning";
@@ -8,54 +8,78 @@ import HelpIcon from "@material-ui/icons/Help";
 
 const ListBox = styled.article`
   display: flex;
-  background-color: ${props => getBGPalette(props.verdict)};
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
   border-radius: 4px;
+  color: #0d1330;
   width: 70%;
-  margin-left: 4vw;
+  margin-left: 5vw;
   margin-top: 3vh;
-  padding: 1vw;
-
+  padding: 1.5rem;
+  border: 1px solid rgba(33, 134, 196, 0.4);
+  transition: 0.2s all;
+  :hover {
+    background-color: #f2f6fa;
+    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
+  }
+  .icon {
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    transform: translate(-60%, -60%);
+    color: ${props => getPalette(props.verdict)};
+  }
+  .icon-wrapper {
+    background-color: rgba(89, 89, 89, 0.3);
+  }
   .pundit-image {
     object-fit: cover;
     object-position: 100% 0;
-    width: 175px;
-    height: 175px;
+    width: 125px;
+    height: 125px;
     border-radius: 4px;
   }
   .fallback-icon {
-    color: darkgrey;
+    color: #b2bcc4;
+    background-color: #dee4e9;
   }
   .listing-textbox {
     display: flex;
     flex-direction: column;
+    justify-content: start;
     margin-left: 2vw;
   }
   .listing-title {
     display: flex;
   }
-  .icon {
-    height: 2rem;
-    width: 2rem;
-    transform: translateY(1.5px);
-    color: ${props => getPalette(props.verdict)};
-  }
   /* dfsdfsdf */
   .name {
     font-size: 2rem;
-    margin-left: 0.5rem;
-    color: ${props => getPalette(props.verdict)};
+    margin-bottom: 0.8rem;
+    font-variant: small-caps;
+    letter-spacing: -2px;
+    letter-spacing: -2px;
+    /* margin-left: 0.5rem; */
     text-decoration: none;
   }
   .info-text {
-    color: black;
     font-size: 1rem;
-    margin-left: 3vw;
+    display: flex;
+    margin-left: 0.8rem;
+  }
+  .role-text {
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+  .org-text {
+    font-weight: 500;
+    opacity: 0.7;
   }
 `;
 
 const ListItem = ({ pundit }) => {
   const getIcon = verdict => {
-    //TODO correct for lowercase and refactor
     const str = verdict;
     if (str === "Reliable") return <VerifiedUserIcon className="icon" />;
     if (str === "Unreliable") return <WarningIcon className="icon" />;
@@ -63,6 +87,7 @@ const ListItem = ({ pundit }) => {
   };
   return (
     <ListBox verdict={pundit.verdict}>
+      <span className="i-wrapper">{getIcon(pundit.verdict)}</span>
       {pundit.imgLink ? (
         <img src={pundit.imgLink} alt={pundit.name} className="pundit-image" />
       ) : (
@@ -70,12 +95,16 @@ const ListItem = ({ pundit }) => {
       )}
       <div className="listing-textbox">
         <div className="listing-title">
-          {getIcon(pundit.verdict)}
-          <h3 className="name">{pundit.name}</h3>
+          <p className="name">{pundit.name}</p>
         </div>
         <div className="info-text">
-          <p>{pundit.organization}</p>
-          <p>{pundit.positionOrRole}</p>
+          <p className="role-text">
+            {pundit.positionOrRole || "Role Placeholder "}:
+          </p>
+
+          <p className="org-text">
+            {pundit.organization || "Org Placeholder "}
+          </p>
         </div>
       </div>
     </ListBox>

@@ -1,20 +1,22 @@
 export const getPalette = verdict => {
   const palette = {
-    Reliable: "rgb(62, 172, 168)",
-    Unreliable: "rgb(172, 0, 15)",
-    Undecided: "rgb(115,115,115)",
+    reliable: "rgb(62, 172, 168)",
+    unreliable: "rgb(172, 0, 15)",
+    undecided: "rgb(115,115,115)",
     null: "rgb(115,115,115)",
+    both: "rgb(115, 115, 155)",
   };
-  return palette[verdict];
+  return palette[verdict.toLowerCase()];
 };
 export const getBGPalette = verdict => {
   const palette = {
-    Reliable: "rgba(62, 172, 168, 0.1)",
-    Unreliable: "rgba(176, 38, 0, 0.1)",
-    Undecided: "rgb(115,115,115, 0.1)",
-    null: "rgb(115,115,115, 0.1)",
+    reliable: "rgba(62, 172, 168, 0.3)",
+    unreliable: "rgba(176, 38, 0, 0.3)",
+    undecided: "rgb(115,115,115, 0.3)",
+    null: "rgb(115,115,115, 0.3)",
+    both: "rgb(115, 115, 155)",
   };
-  return palette[verdict];
+  return palette[verdict.toLowerCase()];
 };
 
 export const trimObjFields = obj => {

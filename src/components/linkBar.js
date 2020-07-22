@@ -8,14 +8,16 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import { getBGPalette, getPalette } from "../helpers";
 
 const Bar = styled.div`
-  width: 100%;
-  height: 12vh;
+  margin: 0 4vw;
+  /* width: 100%; */
+  height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background-color: ${props => props.bgColor};
-  margin-bottom: 4vh;
+  border-top: 1px solid ${props => props.bgColor};
+  border-bottom: 1px solid ${props => props.bgColor};
+  margin-bottom: 2vh;
 
   .icon {
     display: flex;
