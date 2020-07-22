@@ -16,7 +16,7 @@ const ProfilePage = styled.div`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   .pundit-name {
     color: #171e3c;
-  margin-bottom: 6vh;
+  margin-bottom: 3rem;
   margin-left: 4vw;
   font-size: calc(2rem + 0.5vh + 1.5vw);
   letter-spacing: -2px;

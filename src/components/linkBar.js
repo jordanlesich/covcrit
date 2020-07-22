@@ -10,7 +10,7 @@ import { getBGPalette, getPalette } from "../helpers";
 const Bar = styled.div`
   margin: 0 4vw;
   /* width: 100%; */
-  height: 8vh;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;

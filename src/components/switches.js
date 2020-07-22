@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { SearchContext } from "../context/searchContext";
-import DetailsIcon from "@material-ui/icons/Details";
 import styled from "styled-components";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const SwitchBox = styled.div`
   display: flex;
@@ -53,13 +53,13 @@ const SwitchBox = styled.div`
     margin-right: 0.4rem;
   }
   .details-icon {
-    height: 30px;
-    width: 30px;
-    transform: rotate(-90deg);
+    height: 25px;
+    width: 25px;
+    transform: rotate(0deg);
     transition: 0.2s all;
   }
   .selected {
-    transform: rotate(0deg);
+    transform: rotate(-180deg);
   }
 `;
 
@@ -80,7 +80,7 @@ const Switches = () => {
         <span className={"details-label"} onClick={toggleOpen}>
           Advanced Search{" "}
         </span>
-        <DetailsIcon
+        <ExpandMoreIcon
           id="details-icon"
           className={`details-icon ${open && "selected"}`}
           onClick={toggleOpen}
