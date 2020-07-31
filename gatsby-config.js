@@ -25,6 +25,7 @@ module.exports = {
         // Add any options here
       },
     },
+
     {
       resolve: "gatsby-source-google-spreadsheet",
       options: {

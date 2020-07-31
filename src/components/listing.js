@@ -10,9 +10,7 @@ const ListingContainer = styled.div``;
 
 const Listing = ({ nodes }) => {
   const { pundits, orgs, filterType } = useContext(SearchContext);
-  console.log(filterType);
   const getList = nodes => {
-    console.log(nodes);
     return nodes.map((node, index) => {
       return (
         <Link to={`/${node.fields.slug}`} key={index} className="listing-link">

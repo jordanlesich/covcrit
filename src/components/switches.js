@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 import { SearchContext } from "../context/searchContext";
 import styled from "styled-components";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Select from "../components/select";
+import Input from "../components/input";
+import TextBox from "../components/textBox";
 
 const SwitchBox = styled.div`
   display: flex;
@@ -22,10 +25,7 @@ const SwitchBox = styled.div`
     opacity: 1;
     transition: max-height 0.2s ease-in;
   }
-  label {
-    display: inline-block;
-  }
-  select {
+  /* select {
     margin-bottom: 1vh;
     box-sizing: content-box;
     display: inline-block;
@@ -41,7 +41,7 @@ const SwitchBox = styled.div`
   select:focus {
     outline: none;
     border: 2px solid rgba(33, 134, 196, 1);
-  }
+  } */
   .details-switch {
     display: flex;
     align-items: center;
@@ -77,7 +77,7 @@ const Switches = () => {
   return (
     <SwitchBox>
       <div className="details-switch">
-        <span className={"details-label"} onClick={toggleOpen}>
+        <span className="details-label" onClick={toggleOpen}>
           Advanced Search{" "}
         </span>
         <ExpandMoreIcon
@@ -87,38 +87,48 @@ const Switches = () => {
         />
       </div>
       <div className={`select-box ${open && "box-open"}`}>
-        <label htmlFor="filter-type">Search For: </label>
-        <select
-          id="filter-type"
-          className="filter-type"
-          onChange={switchFilterType}
-          onBlur={switchFilterType}
-        >
-          <option value="pundit">Only Pundits</option>
-          <option value="organization">Only Organizations</option>
-        </select>
-        <label htmlFor="search-by-reliable">Reliability: </label>
-        <select
-          id="search-by-reliable"
-          className="search-by-reliable"
-          onChange={handleSearchReliable}
-          onBlur={handleSearchReliable}
-        >
-          <option value="both"> Both </option>
-          <option value="reliable"> Reliable</option>
-          <option value="unreliable"> Unreliable </option>
-        </select>
-        <label htmlFor="search-type">Search By: </label>
-        <select
-          id="search-type"
-          className="search-type"
-          onChange={handleSearchType}
-          onBlur={handleSearchType}
-        >
-          <option value="name"> Name </option>
-          <option value="organization"> Organization </option>
-          <option value="field"> Field </option>
-        </select>
+        <Select
+          id={"filter-type"}
+          label={"Search For:"}
+          options={[
+            { value: "pundit", name: "Pundits" },
+            { value: "organization", name: "Organizations" },
+          ]}
+          fn={switchFilterType}
+        />
+        <Select
+          id={"search-by-reliable"}
+          label={"Reliability"}
+          options={[
+            { value: "both", name: "Both" },
+            { value: "reliable", name: "Reliable" },
+            { value: "unreliable", name: "Unreliable" },
+          ]}
+          fn={handleSearchReliable}
+        />
+        <Select
+          id={"search-type"}
+          label={"Search By: "}
+          options={[
+            { value: "name", name: "Name" },
+            { value: "organization", name: "Organization" },
+            { value: "field", name: "Field" },
+          ]}
+          fn={handleSearchType}
+        />
+        <Input
+          label="Test"
+          id="text"
+          fn={() => console.log("test")}
+          placeholder="Holy Shit!"
+          type="email"
+        />
+        <TextBox
+          label="Test"
+          id="text"
+          fn={() => console.log("test")}
+          placeholder="Holy Shit!"
+        />
       </div>
     </SwitchBox>
   );

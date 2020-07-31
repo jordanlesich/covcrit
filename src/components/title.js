@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+
 import { SearchContext } from "../context/searchContext";
 import { getPalette } from "../helpers";
+
 const HomePageTitle = styled.h1`
-  color: #171e3c;
+  color: ${getPalette("secondary")};
   margin-bottom: 4vh;
   margin-left: 4vw;
   font-size: calc(2rem + 0.5vh + 1.5vw);
@@ -32,7 +34,7 @@ const Title = () => {
   const { filterType, searchType, isReliable } = useContext(SearchContext);
 
   return (
-    <HomePageTitle color={getPalette(isReliable)}>
+    <HomePageTitle color={getPalette(isReliable)} key={"title"}>
       Find
       <span className="search-reliable">
         {isReliable === "reliable" && " Reliable"}

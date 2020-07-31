@@ -45,7 +45,6 @@ export const SearchProvider = props => {
 
   const filterNodes = (str, type, reliable, sType) => {
     const nodes = type === "pundit" ? punditNodes : orgNodes;
-    console.log(nodes);
     const setter = type === "pundit" ? setPundits : setOrgs;
     let newNodes = nodes.filter(node => {
       if (node[sType] != null) {

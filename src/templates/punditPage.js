@@ -15,7 +15,7 @@ const ProfilePage = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   .pundit-name {
-    color: #171e3c;
+    color: ${getPalette("secondary")};
   margin-bottom: 3rem;
   margin-left: 4vw;
   font-size: calc(2rem + 0.5vh + 1.5vw);

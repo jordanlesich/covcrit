@@ -12,14 +12,19 @@ const ListBox = styled.article`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   position: relative;
   border-radius: 4px;
-  color: #0d1330;
+  color: ${getPalette("secondary")};
   width: 70%;
   margin-left: 5vw;
   margin-top: 3vh;
   padding: 1.5rem;
-  border: 1px solid rgba(33, 134, 196, 0.4);
+  border: 1px solid rgba(33, 134, 196, 0.3);
   transition: 0.2s all;
   :hover {
+    background-color: #f2f6fa;
+    box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
+  }
+  :focus {
+    outline: none;
     background-color: #f2f6fa;
     box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
   }
@@ -55,18 +60,18 @@ const ListBox = styled.article`
   }
   /* dfsdfsdf */
   .name {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0.8rem;
-    font-variant: small-caps;
+    /* font-variant: small-caps; */
     letter-spacing: -2px;
     letter-spacing: -2px;
     /* margin-left: 0.5rem; */
     text-decoration: none;
   }
   .info-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     display: flex;
-    margin-left: 0.8rem;
+    /* margin-left: 0.8rem; */
   }
   .role-text {
     font-weight: 500;
