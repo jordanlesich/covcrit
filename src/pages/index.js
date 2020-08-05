@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Layout from "../components/layout";
 
 import Listing from "../components/listing";
 import Title from "../components/title";
-import Layout from "../components/layout";
 import Search from "../components/search";
 import Switches from "../components/switches";
 

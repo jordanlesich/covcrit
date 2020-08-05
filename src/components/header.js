@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Button from "../components/button";
@@ -71,7 +71,7 @@ const Header = ({ toggleContact }) => {
         <span className="cov">COV</span>
         <span className="critic">Critic</span>
       </Link>
-      <Link to="/" className="nav-link">
+      <Link to="/about" className="nav-link">
         About
       </Link>
       <Link to="/" className="nav-link">

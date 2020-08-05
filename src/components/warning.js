@@ -14,7 +14,7 @@ const WarnBox = styled.div`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   border-radius: 4px;
   background-color: #ffffff;
-  width: 32rem;
+  width: 35rem;
   color: ${getPalette("secondary")};
   padding: 1.5rem;
   z-index: 20;

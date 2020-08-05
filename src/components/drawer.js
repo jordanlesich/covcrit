@@ -6,7 +6,7 @@ import Backdrop from "./backdrop";
 const StyledDrawer = styled.div`
   display: flex;
   justify-content: center;
-  width: 30vw;
+  width: 50vw;
   height: 100%;
   position: fixed;
   right: 0;

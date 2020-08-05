@@ -10,6 +10,8 @@ const StyledButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s all;
+  height: ${props => props.height};
+  width: ${props => props.width};
   :hover {
     /* background-color: #f2f6fa; */
     box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
@@ -28,9 +30,16 @@ const StyledButton = styled.button`
         : getBGPalette("secondary")};
 `;
 
-const Button = ({ type, fn, size, text, value }) => {
+const Button = ({ type, fn, size, text, value, height, width }) => {
+  console.log(text);
   return (
-    <StyledButton type={type} onClick={fn} value={value}>
+    <StyledButton
+      type={type}
+      onClick={fn}
+      value={value}
+      height={height || "inherit"}
+      width={width || "inherit"}
+    >
       {text}
     </StyledButton>
   );

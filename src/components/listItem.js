@@ -1,5 +1,5 @@
 import React from "react";
-import { getPalette } from "../helpers";
+import { getPalette, getBGPalette } from "../helpers";
 import styled from "styled-components";
 import PersonIcon from "@material-ui/icons/Person";
 import WarningIcon from "@material-ui/icons/Warning";
@@ -20,7 +20,7 @@ const ListBox = styled.article`
   border: 1px solid rgba(33, 134, 196, 0.3);
   transition: 0.2s all;
   :hover {
-    background-color: #f2f6fa;
+    background-color: ${getBGPalette("highlight")};
     box-shadow: 5px 5px 3px -3px rgba(89, 89, 89, 0.3);
   }
   :focus {
