@@ -62,7 +62,7 @@ const SwitchBox = styled.div`
     transform: rotate(-180deg);
   }
 `;
-
+//build
 const Switches = () => {
   const {
     handleSearchType,
@@ -96,6 +96,7 @@ const Switches = () => {
           ]}
           fn={switchFilterType}
         />
+
         <Select
           id={"search-by-reliable"}
           label={"Reliability"}
