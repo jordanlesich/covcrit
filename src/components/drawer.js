@@ -44,5 +44,4 @@ const Drawer = ({ toggleDrawer, children }) => {
     </Backdrop>
   );
 };
-//TODO remove comment
 export default Drawer;
