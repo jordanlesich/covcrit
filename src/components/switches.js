@@ -120,14 +120,14 @@ const Switches = () => {
           label="Test"
           id="text"
           fn={() => console.log("test")}
-          placeholder="Holy Shit!"
+          placeholder="placeholder"
           type="email"
         />
         <TextBox
           label="Test"
           id="text"
           fn={() => console.log("test")}
-          placeholder="Holy Shit!"
+          placeholder="placeholder  "
         />
       </div>
     </SwitchBox>
